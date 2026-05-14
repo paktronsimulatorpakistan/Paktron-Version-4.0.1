@@ -1,136 +1,319 @@
-# 🚀 PKTron 4.0.1 — Full-Stack Quantum Computing Framework
+# 🚀 PKTron — Full Quantum Computing Framework (v4.0.1)
 
-PKTron is a unified quantum computing simulation and research framework that integrates quantum algorithms, tensor networks, quantum machine learning, cryptography, hardware modeling, and HPC execution into a single Python ecosystem.
-
-Developed by **CETQAP**.
+PKTron is a large-scale quantum computing simulation and research framework integrating quantum circuits, algorithms, machine learning, cryptography, tensor networks, HPC acceleration, and hardware modeling into a unified architecture.
 
 ---
 
-## ⚙️ Key Features
+# 🔬 Core Module (pktron.core) — 50+ Classes
 
-### 🔬 Core Quantum Simulation Engine (13 Backends)
+## 🧠 Simulators
 
-- Statevector simulation (exact up to ~28 qubits)
-- Density Matrix simulation (noise + open systems)
-- Matrix Product States (MPS) (50–100+ qubits)
-- Adaptive MPS (dynamic entanglement scaling)
-- PEPS (2D lattice systems)
-- MERA (multi-scale entanglement systems)
-- Clifford simulator (large stabilizer circuits)
-- Pulse-level hardware simulation
-- Quantum trajectory simulation
-- Multi-GPU distributed statevector engine
-
----
-
-## 🧠 Quantum Algorithms (50+ Implementations)
-
-- Grover’s Search
-- Shor’s Factoring Algorithm
-- Quantum Fourier Transform (QFT)
-- Quantum Phase Estimation (QPE)
-- VQE / ADAPT-VQE
-- QAOA (Max-Cut optimization)
-- Quantum Annealing simulation
-- Quantum Walks
-- Amplitude Amplification
-- Quantum Chemistry (H₂, BeH₂, Bravyi–Kitaev mapping)
+| Class | Description |
+|------|------------|
+| QuantumCircuit | 23-gate circuit builder; supports standard + custom unitaries |
+| StatevectorSimulator | Exact simulation up to ~28 qubits |
+| DensityMatrixSimulator | Mixed states, Kraus channels, Lindblad noise |
+| MPSSimulator | Matrix Product States (50–100+ qubits) |
+| AdaptiveMPSSimulator | Auto bond-dimension MPS |
+| PEPSimulator | 2D Projected Entangled Pair States |
+| MERASimulator | Multi-scale Entanglement Renormalisation Ansatz |
+| TensorNetworkSimulator | General tensor contraction engine |
+| CliffordSimulator | Stabilizer tableau (millions of qubits) |
+| PulseLevelSimulator | Time-domain Lindblad master equation |
+| QuantumTrajectorySimulator | Quantum trajectory unraveling |
+| MultiGPUSimulator | Distributed GPU statevector (CuPy) |
 
 ---
 
-## 🤖 Quantum Machine Learning
+## ⚛️ Gate Set (23 Native Gates)
 
-- Quantum Neural Networks (QNN)
-- Quantum Support Vector Machines (QSVM)
-- Quantum GANs
-- Quantum CNNs
-- Quantum Reinforcement Learning
-- Quantum Autoencoders
-- Quantum Federated Learning
-- Quantum Transfer Learning
+H, X, Y, Z, S, T, Rx, Ry, Rz, CNOT, CZ, SWAP, iSWAP, CCX, CSWAP, CRz, Rzz, Rxx, Ryy, DCX, ECR, U3
 
----
-
-## 🔐 Quantum Cryptography & Security
-
-- BB84, E91, MDI-QKD, DIQKD
-- Quantum Secret Sharing
-- Blind Quantum Computing
-- Quantum Digital Signatures
-- Post-Quantum Cryptography primitives
+Plus:
+- Parametric gates  
+- Barrier  
+- Mid-circuit measurement  
+- Conditional gates  
+- Custom unitary injection  
 
 ---
 
-## 🧩 Error Correction & Mitigation
+## 🧮 Quantum Algorithms
 
-- Surface Code
-- Steane [[7,1,3]] Code
-- Bacon-Shor Code
-- Color Codes
-- Zero Noise Extrapolation (ZNE)
-- Probabilistic Error Cancellation (PEC)
-- Clifford Data Regression (CDR)
-- Readout Error Mitigation
-- MWPM-based logical error analysis
-
----
-
-## ⚡ HPC, GPU & Distributed Runtime
-
-- AVX-optimized C kernels
-- GPU acceleration (CuPy backend)
-- Multi-node distributed execution (MPI-style)
-- DAG-based circuit scheduling
-- Circuit caching & optimization
-- Multi-backend runtime system
+| Class | Algorithm |
+|------|----------|
+| GroverSearch | Amplitude amplification |
+| Shor | QPE-based factoring |
+| VQE | Variational Quantum Eigensolver |
+| QAOA | Max-Cut optimization |
+| HHLAlgorithm | Linear system solver |
+| QuantumPhaseEstimation | IQFT-based QPE |
+| SimonsAlgorithm | Hidden subgroup (GF2) |
+| DeutschJozsa | Oracle algorithm |
+| QuantumFourierTransform | QFT |
+| AmplitudeAmplification | Generalized AA |
+| QuantumCounting | QPE-based counting |
+| QuantumWalk | Discrete quantum walk |
+| QuantumAnnealing | Annealing simulation |
+| QuantumChemistry | H₂ / BeH₂ mapping |
 
 ---
 
-## 🏗️ Advanced Modules
+## 🤖 QML & Optimization
 
-- Tensor Networks (MPS, PEPS, MERA)
-- Quantum Finance (portfolio optimization, Monte Carlo, risk models)
-- Quantum Defense Systems (VRP, swarm optimization, scheduling)
-- Quantum Chemistry workflows (active space, symmetry reduction)
+Quantum machine learning stack:
 
----
-
-## 🔄 Interoperability
-
-- Qiskit support
-- Cirq support
-- PennyLane integration
-- OpenQASM 2.0 / 3.0 support
-- Quil export/import
-- QPY binary serialization
+- QuantumNeuralNetwork  
+- QSVM  
+- QuantumGAN  
+- QuantumAutoencoder  
+- QuantumCNN  
+- QuantumBoltzmannMachine  
+- QuantumFederatedLearning  
+- QuantumReinforcementLearning  
+- QuantumTransferLearning  
 
 ---
 
-## 📊 Benchmarking Suite
+## 🔐 Cryptography & QKD
+
+| Class | Description |
+|------|------------|
+| BB84Protocol | QKD with noise + QBER + eavesdropping |
+| PostQuantumCrypto | Lattice/hash-based cryptography |
+
+---
+
+## 🧩 Error Mitigation
+
+- ZeroNoiseExtrapolation (Richardson)
+- ProbabilisticErrorCancellation (PEC)
+- CliffordDataRegression (CDR)
+- ReadoutErrorMitigation
+- DynamicalDecoupling
+
+---
+
+## 🧠 Error Correction
+
+| Code | Description |
+|------|------------|
+| Steane7QEC | [[7,1,3]] code |
+| SurfaceCode | Rotated surface code |
+| SurfaceCodeDistance | MWPM logical error rate |
+| BaconShorCode | Subsystem code |
+| ColorCode | Topological code |
+| RepetitionCode | Classical analogue |
+
+---
+
+## ⚙️ Hardware & Transpilation
+
+- SABRERouter (qubit routing)
+- HardwareBackend (noise-aware execution)
+- DRAGPulse (optimal control)
+- CrossResonancePulse
+
+---
+
+## 📊 Benchmarking
 
 - Quantum Volume (QV)
 - Randomized Benchmarking (RB)
 - Cross Entropy Benchmarking (XEB)
 - CLOPS throughput metrics
-- State / Process / Gate tomography
-- Layer fidelity estimation
 
 ---
 
-## 🧪 Philosophy
+# 🧩 Specialised Modules (25+)
 
-PKTron is designed as a **full-stack quantum research ecosystem**, combining:
-
-- Quantum physics simulation  
-- Algorithm development  
-- Quantum machine learning  
-- Cryptography systems  
-- Hardware modeling  
-- High-performance computing  
+| Module | Key Class | Description |
+|------|-----------|------------|
+| matchgate_sim | MatchgateSimulator | Exact fermionic simulation |
+| dmrg | DMRGSolver | Heisenberg / Ising ground states |
+| fermionic_gaussian | FermionicGaussianSimulator | Gaussian fermionic states |
+| qkd_pipeline | QKDPipeline | BB84 → DIQKD pipeline |
+| barren_plateau | BarrenPlateauAnalyzer | Gradient landscape analysis |
+| noise_aware_compile | NoiseAwareCompiler | Noise-aware compilation |
+| qsvt | QSVT | Singular value transformation |
+| circuit_debugger | QuantumCircuitDebugger | Step-by-step execution |
+| gradients | ParameterShiftGradient | Quantum gradients |
+| pauli | PauliSum | Sparse Pauli algebra |
+| decompose | KAK / Euler decomposition |
+| interop | InteropConverter | Qiskit/Cirq/PennyLane/QASM3 |
+| advanced_qml | QuantumKernelTrainer | Advanced QML |
+| advanced_mitigation | SymmetryVerification | Mitigation methods |
+| advanced_crypto | QuantumSecretSharing | Quantum crypto |
+| advanced_algorithms | QuantumMetropolis | Advanced algorithms |
+| new_algorithms | QuantumWalkSearch | Next-gen algorithms |
+| finance | QuantumPortfolioOptimizer | Finance models |
+| defense | QuantumVRP | Logistics & defense |
 
 ---
 
-## 📦 Installation
+# ⚙️ Advanced Module (pktron.advanced)
 
-```bash
-pip install pktron
+- UCCSDSolver (Unitary Coupled Cluster)
+- ADAPTVQESolver
+- VirtualDistillation
+- OpenQASM3 export/import
+- JAXOptimizer
+- SurfaceCodeDistance
+- AdaptiveMPSSimulator
+
+---
+
+# 🚀 HPC Subsystem (8 Subpackages)
+
+## Kernels & Runtime
+
+- AVX-512 / AVX2 / SSE optimized kernels
+- OpenMP parallel execution
+- Gate fusion + sampling kernels
+
+## Scheduler & Runtime
+
+- DAG-based scheduling
+- Clifford detection engine
+- Multi-backend execution system
+
+## GPU & Distributed
+
+- CuPy GPU backend
+- MPI-style distributed runtime
+- Multi-GPU orchestration
+
+## Sparse & Cache
+
+- Sparse Hamiltonians (Ising, Heisenberg)
+- Circuit caching system
+
+---
+
+# 🏗 Modular Architecture (v4.0.1)
+
+- BackendRegistry
+- QuantumIR compiler
+- TaskGraphScheduler
+- TensorNetwork engine
+- GPU memory pool
+- Visualization tools
+
+---
+
+# 🔧 Hardware & Noise Modules
+
+- Noise models (Depolarizing, Amplitude damping, Crosstalk)
+- Gate scheduling system
+- Drift simulation engine
+- Dynamic circuits (feed-forward logic)
+- Virtual devices
+- Hardware execution reports
+
+---
+
+# 🛠 Utility Modules
+
+- PKTronConfig (config system)
+- QuantumStateValidator
+- PerformanceMonitor
+
+---
+
+# 🔬 Chemistry Expansion (14 Classes)
+
+- Molecule
+- ElectronicStructureProblem
+- HartreeFockInitialPoint
+- ActiveSpaceTransformer
+- FreezeCoreTransformer
+- Z2Symmetries
+- ParityMapper
+- BravyiKitaev mapping
+- kUpCCGSD
+- PUCCD / SUCCD
+- qEOM
+- SSVQE
+
+Molecules:
+H₂, N₂, CH₄, CO₂, NH₃, C₂H₄
+
+---
+
+# 🔄 Interoperability (9 Classes)
+
+- QASM2Codec
+- QASM3Parser
+- QuilExporter
+- QiskitImporter
+- CirqImporter
+- PennyLaneImporter
+- IonQExporter
+- BraketExporter
+- QPYCodec
+
+---
+
+# 🧮 Pauli Framework (7+ Functions)
+
+- Pauli (symplectic)
+- SparsePauliOp
+- PauliGrouper
+- commutator / anti-commutator
+- commuting group decomposition
+
+---
+
+# 🔁 Circuit Construction (13 Classes)
+
+- Parameter / ParameterVector
+- QuantumRegister / ClassicalRegister
+- DAGCircuit / DAGNode
+- Control flow (If, While, For, Switch)
+- Circuit transformations (.compose, .inverse, .tensor)
+
+---
+
+# 🔬 Benchmarking Suite
+
+- StandardRB
+- InterleavedRB
+- MirrorRB
+- XEB (cross entropy)
+- CLOPS
+- StateTomography
+- ProcessTomography
+- GateTomography
+- LayerFidelityEstimator
+
+---
+
+# 🩹 Physics & Algorithm Fixes (15+)
+
+- Correct GHZ uniform distribution
+- Fixed QPE phase estimation
+- Simon’s algorithm correction
+- Deutsch-Jozsa oracle fix
+- VQE normalization guarantees
+- QAOA energy correction
+- XEB formula correction
+- Surface code MWPM decoding
+- BB84 QBER realism improvements
+- DMRG convergence stability
+- GRAPE optimization fixes
+
+---
+
+# 📦 Summary
+
+PKTron integrates:
+
+- Quantum simulation (statevector → tensor networks)
+- Quantum algorithms (classical + variational)
+- Quantum machine learning
+- Cryptography & QKD
+- Error correction & mitigation
+- HPC + GPU + distributed runtime
+- Chemistry simulation
+- Finance & defense optimization
+- Full interoperability ecosystem
